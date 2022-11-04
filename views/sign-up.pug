@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div.container
+    h2 Sign-Up 
+
+    form(method='POST' action='')
+        div.m3-b
+        label(for='username') Username:
+        input#username.form-control(type='text' placeholder='UserName' name='username' minLength=1 maxLength=20 required='true' value=(undefined===user ? '' : user.username) )
+        div.m3-b
+        label(for='email') Email:
+        input#email.form-control(type='email' placeholder='your@email.com' name='email' required='true' value=(undefined===user ? '' : user.email))
+        div.m3-b
+        label(for='password') Password:
+        input#password.form-control(type='password' required='true' name='password' value=("") minLength=8)
+        div.m3-b  
+        label(for='confirm_password') Confirm Password:
+        input#confirm_password.form-control(type='password' required='true' name='confirm_password' value=("") minLength=8)
+        br
+        button.btn.btn-primary(type='submit') Submit
+    if errors
+        ul
+        for error in errors
+            li!= error.msg
